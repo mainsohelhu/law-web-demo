@@ -657,19 +657,19 @@
           <form id="callback-form" style="transition: opacity 0.3s ease, transform 0.3s ease;">
             <div style="margin-bottom: 1.5rem;">
               <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Your Full Name</label>
-              <input type="text" required style="width: 100%; padding: 1rem; border: 2px solid var(--glass-border); border-radius: var(--border-radius-sm); background: var(--bg-primary); color: var(--text-primary); font-size: 1rem;">
+              <input type="text" id="contact-name" required style="width: 100%; padding: 1rem; border: 2px solid var(--glass-border); border-radius: var(--border-radius-sm); background: var(--bg-primary); color: var(--text-primary); font-size: 1rem;">
             </div>
             <div style="margin-bottom: 1.5rem;">
               <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Your Email Address</label>
-              <input type="email" required style="width: 100%; padding: 1rem; border: 2px solid var(--glass-border); border-radius: var(--border-radius-sm); background: var(--bg-primary); color: var(--text-primary); font-size: 1rem;">
+              <input type="email" id="contact-email" required style="width: 100%; padding: 1rem; border: 2px solid var(--glass-border); border-radius: var(--border-radius-sm); background: var(--bg-primary); color: var(--text-primary); font-size: 1rem;">
             </div>
             <div style="margin-bottom: 1.5rem;">
               <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Your Phone Number</label>
-              <input type="tel" required style="width: 100%; padding: 1rem; border: 2px solid var(--glass-border); border-radius: var(--border-radius-sm); background: var(--bg-primary); color: var(--text-primary); font-size: 1rem;">
+              <input type="tel" id="contact-phone" required style="width: 100%; padding: 1rem; border: 2px solid var(--glass-border); border-radius: var(--border-radius-sm); background: var(--bg-primary); color: var(--text-primary); font-size: 1rem;">
             </div>
             <div style="margin-bottom: 1.5rem;">
               <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">What work do you need covered?</label>
-              <textarea rows="4" required style="width: 100%; padding: 1rem; border: 2px solid var(--glass-border); border-radius: var(--border-radius-sm); background: var(--bg-primary); color: var(--text-primary); font-size: 1rem;"></textarea>
+              <textarea id="contact-message" rows="4" required style="width: 100%; padding: 1rem; border: 2px solid var(--glass-border); border-radius: var(--border-radius-sm); background: var(--bg-primary); color: var(--text-primary); font-size: 1rem;"></textarea>
             </div>
             <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; padding: 1.2rem; font-size: 1.1rem; font-weight: bold; position: relative; transition: all 0.3s ease;">
               <span id="btn-text" style="transition: opacity 0.3s ease;">Submit Request</span>

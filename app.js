@@ -366,7 +366,7 @@ function initScrollReveal() {
   revealElements.forEach(el => observer.observe(el));
 }
 
-/* --- CONTACT FORM ANIMATION --- */
+/* --- CONTACT FORM ANIMATION & SUBMISSION --- */
 function initContactForm() {
   const form = document.getElementById('callback-form');
   const successMessage = document.getElementById('callback-success');
@@ -378,35 +378,65 @@ function initContactForm() {
   const animatedCheck = document.getElementById('animated-check');
   
   if (form && successMessage && submitBtn) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       
-      // 1. Loading State (Simulate Network Request)
+      const name = document.getElementById('contact-name')?.value;
+      const email = document.getElementById('contact-email')?.value;
+      const phone = document.getElementById('contact-phone')?.value;
+      const message = document.getElementById('contact-message')?.value;
+      
+      // Loading State
       submitBtn.disabled = true;
       btnText.style.opacity = '0';
       btnSpinner.style.display = 'block';
       submitBtn.style.transform = 'scale(0.98)';
       submitBtn.style.cursor = 'wait';
       
-      setTimeout(() => {
-        // 2. Fade out form and headers, but KEEP layout space
-        form.style.opacity = '0';
-        form.style.visibility = 'hidden';
-        if (formTitle) { formTitle.style.opacity = '0'; formTitle.style.visibility = 'hidden'; }
-        if (formDesc) { formDesc.style.opacity = '0'; formDesc.style.visibility = 'hidden'; }
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, phone, message })
+        });
         
-        // 3. Show success message and trigger SVG animation
-        setTimeout(() => {
-          successMessage.style.pointerEvents = 'auto';
-          successMessage.style.opacity = '1';
-          successMessage.style.transform = 'translateY(0)';
+        const data = await response.json();
+        
+        if (data.success) {
+          // Fade out form and headers, but KEEP layout space
+          form.style.opacity = '0';
+          form.style.visibility = 'hidden';
+          if (formTitle) { formTitle.style.opacity = '0'; formTitle.style.visibility = 'hidden'; }
+          if (formDesc) { formDesc.style.opacity = '0'; formDesc.style.visibility = 'hidden'; }
           
-          if (animatedCheck) {
-            animatedCheck.classList.add('draw-check');
-          }
-        }, 100);
-      }, 1500); // 1.5s simulated delay
+          // Show success message and trigger SVG animation
+          setTimeout(() => {
+            successMessage.style.pointerEvents = 'auto';
+            successMessage.style.opacity = '1';
+            successMessage.style.transform = 'translateY(0)';
+            
+            if (animatedCheck) {
+              animatedCheck.classList.add('draw-check');
+            }
+          }, 100);
+        } else {
+          alert('Error: ' + data.error);
+          resetFormState();
+        }
+      } catch (err) {
+        console.error('Submission error:', err);
+        alert('Failed to connect to the server. Please try again.');
+        resetFormState();
+      }
     });
+
+    function resetFormState() {
+      submitBtn.disabled = false;
+      btnText.style.opacity = '1';
+      btnSpinner.style.display = 'none';
+      submitBtn.style.transform = 'scale(1)';
+      submitBtn.style.cursor = 'pointer';
+    }
   }
 }
 
