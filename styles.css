@@ -248,6 +248,25 @@ html { scroll-padding-top: calc(var(--header-height) + 1.5rem); }
   font-size: 0.9rem;
 }
 
+.btn-hero-outline {
+  border: 2px solid rgba(91, 226, 206, 0.4);
+  background: transparent;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.btn-hero-outline::after {
+  display: none; /* override btn-secondary pseudo element */
+}
+
+.btn-hero-outline:hover {
+  border-color: var(--color-accent);
+  background: rgba(91, 226, 206, 0.1);
+  box-shadow: 0 0 20px rgba(91, 226, 206, 0.3);
+  color: var(--text-primary);
+  transform: translateY(-3px);
+}
+
 /* Theme Toggle Button */
 .theme-toggle-btn {
   background: var(--bg-tertiary);
