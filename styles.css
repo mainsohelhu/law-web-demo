@@ -52,9 +52,9 @@
   --text-muted: #64748b;
   
   --glass-bg: rgba(15, 22, 36, 0.7);
-  --glass-border: rgba(212, 175, 55, 0.15);
+  --glass-border: rgba(91, 226, 206, 0.15);
   --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
-  --hover-shadow: 0 20px 40px -5px rgba(212, 175, 55, 0.15);
+  --hover-shadow: 0 20px 40px -5px rgba(91, 226, 206, 0.15);
 }
 
 /* --- RESET & BASE STYLES --- */
@@ -1900,9 +1900,9 @@ html { scroll-padding-top: calc(var(--header-height) + 1.5rem); }
 }
 
 @keyframes pulseGlow {
-  0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
-  50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.7); }
-  100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+  0% { box-shadow: 0 0 10px rgba(91, 226, 206, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(91, 226, 206, 0.7); }
+  100% { box-shadow: 0 0 10px rgba(91, 226, 206, 0.3); }
 }
 .btn-primary {
   animation: pulseGlow 3s infinite;
