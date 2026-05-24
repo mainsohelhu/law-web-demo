@@ -394,7 +394,11 @@ function initContactForm() {
       submitBtn.style.cursor = 'wait';
       
       try {
-        const response = await fetch('http://localhost:3001/api/contact', {
+        const apiUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') && window.location.port !== '3001'
+          ? 'http://localhost:3001/api/contact'
+          : '/api/contact';
+          
+        const response = await fetch(apiUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email, phone, message })
